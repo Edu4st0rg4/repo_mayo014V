@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+    <title>Api de post</title>
+</head>
+<body>
+    <script>
+        let url='https://jsonplaceholder.typicode.com/posts'
+        fetch(url)
+        .then(response => response.json())
+        .then(data => mostrarData(data))
+        .catch(error => console.log(error))
+    const mostrarData=(data) =>{
+        console.log(data)
+        let body = ""
+        for(var i=0; i<data.length;i++)
+        {
+            body+=`<tr>
+                <td><p class="textoDir">${data[i].userId==2}</td>
+                <td><p class="textoDir">${data[i].id}</td>
+                <td><p class="textoDir">${data[i].title}</td>
+                <td><p class="textoDir">${data[i].body}</td>
+                </tr>`
+        }
+        document.getElementById('data').innerHTML=body;
+    }
+    </script>
+    <style>
+        .textoDir{
+            color: blue;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+    </style>
+    <div class="container">
+        <h2>Api de usuario</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="textoDir">UserId</th>
+                    <th class="textoDir">Id</th>
+                    <th class="textoDir">Titulo</th>
+                    <th class="textoDir">Texto</th>
+            </thead>
+            <tbody id="data">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
